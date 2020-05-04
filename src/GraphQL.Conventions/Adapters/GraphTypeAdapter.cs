@@ -59,7 +59,12 @@ namespace GraphQL.Conventions.Adapters
 
         public void RegisterScalarType<TType>(string name)
         {
-            _registeredScalarTypes.Add(name, typeof(TType));
+            RegisterScalarType(typeof(TType), name);
+        }
+        
+        public void RegisterScalarType(Type type, string name)
+        {
+            _registeredScalarTypes.Add(name, type);
         }
 
         private IGraphType DeriveTypeFromTypeInfo(Type type)
